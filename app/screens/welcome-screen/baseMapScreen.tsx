@@ -55,7 +55,7 @@ interface State {
   routeSimulator: any,
 }
 
-export class WelcomeScreen extends React.Component <State> {
+export class BaseMapScreen extends React.Component <State> {
   constructor(props) {
     super(props)
 
