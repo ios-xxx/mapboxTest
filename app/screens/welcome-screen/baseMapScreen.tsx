@@ -74,18 +74,16 @@ export class BaseMapScreen extends React.Component <State> {
     routeSimulator.addListener(currentPoint => this.setState({ currentPoint }))
     routeSimulator.start()
     setTimeout(() => {
-
       routeSimulator.stop()
-    },3000)
+    }, 3000)
     this.setState({ routeSimulator })
   }
 
   onStop() {
     const { routeSimulator } = this.state
     if (routeSimulator) {
-
       routeSimulator.stop()
-      this.setState({routeSimulator})
+      this.setState({ routeSimulator })
     }
   }
 
@@ -275,7 +273,16 @@ export class BaseMapScreen extends React.Component <State> {
               style={layerStyles.destination}
             />
           </MapboxGL.ShapeSource>
-
+          <MapboxGL.RasterSource
+            id={'cusstomSource'}
+            url={'http://192.168.1.231:98/geodata/map/{z}/{x}/{y}.pbf'}
+            tileSize={256}
+          >
+            <MapboxGL.RasterLayer
+              id="stamenWatercolorLayer"
+              sourceID="cusstomSource"
+            />
+          </MapboxGL.RasterSource>
         </MapboxGL.MapView>
 
         {this.renderActions()}
